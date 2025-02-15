@@ -1,0 +1,63 @@
+<%- include("navbar.ejs")%>
+<form action="/admin/save_project" method="post" enctype="multipart/form-data">
+    <div class="container bg-info">
+        <div class="row mt-4">
+            <div class="col-12 mt-3">
+    <h3 class="text-center">Add Project</h3>
+            </div>
+            <div class="col-2 mt-3 mb-3 mr-3">
+                Project Image
+                <input type="file" name="project_image"/>
+            </div>
+            <!-- <div class="col-2 mt-3 mb-3">
+                Image Here
+            </div> -->
+            <div class="col-2 mt-3 mb-3 mr-3">
+              Project Title
+               <input type="text" name="project_title" />
+            </div>
+            <div class="col-2 mt-3 mb-3 mr-3">
+                Project Description
+                 <input type="text" name="project_description" />
+              </div>
+            <div class="col-2 mt-3 mb-3">
+                <br>
+                <button class="btn btn-primary">Save</button>
+            </div>
+            </div>
+            </div>
+            </form>
+
+    <div class="container bg-info">
+                <div class="row mt-4">
+                    <div class="col-12 mt-3">
+            <h3 class="text-center">Project List</h3>
+                    </div>
+                    <div class="col-12 mt-3 mb-3">
+                        <table border="1" class="table-bordered table-hover table-striped" width="100%">
+                            <tr>
+                                <th>Action</th>
+                                <th>Sr.No</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                            </tr>
+                            <% project.map((row,i)=>{ %>
+                                <tr>
+                                    <td>
+                                        <a href="/admin/edit_project/<%-row.project_id%>"><button class="btn btn-warning">Edit</button></a>
+                                        <a href="/admin/delete_project/<%-row.project_id%>"><button class="btn btn-danger">Delete</button></a>
+                                    </td>
+                                    <td><%-i+1%></td>
+                                    <td><img src="/<%-row.project_image%>" width="100px"/></td>
+                                    <td><%-row.project_title%></td>
+                                    <td><%-row.project_description%></td>
+                                </tr>
+
+                          <%  }) %>
+                        </table>
+                    </div>
+                    </div>
+                    </div>
+    
+<%- include("footer.ejs")%>

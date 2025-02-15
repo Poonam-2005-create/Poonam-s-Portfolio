@@ -1,0 +1,31 @@
+<%- include("navbar.ejs")%>
+
+<form action="/admin/update_education" method="post">
+    <div class="container bg-info">
+        <div class="row mt-4">
+            <% edu.map((row)=>{ %>
+            <div class="col-12 mt-3">
+    <h3 class="text-center">Edit Education</h3>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+                Enter Degree With Year
+                <input type="text" name="user_degree" class="form-control" value="<%-row.user_degree%>"/>
+                <input type="hidden" name="edu_id" class="form-control" value="<%-row.edu_id%>"/>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+                Enter University
+                <input type="text" name="user_university" class="form-control" value="<%-row.user_university%>"/>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+                Enter Passing Year
+                <input type="number" name="passing_year" class="form-control" value="<%-row.passing_year%>"/>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+                <br>
+               <button class="btn btn-primary">Update</button>
+            </div>  
+            <%  }) %> 
+</div>
+</div>
+</form>
+<%- include("footer.ejs")%>

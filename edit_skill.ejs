@@ -1,0 +1,30 @@
+<%- include("navbar.ejs")%>
+<form action="/admin/update_skill" method="post" enctype="multipart/form-data">
+    <div class="container bg-info">
+        <div class="row mt-4">
+            <div class="col-12 mt-3">
+    <h3 class="text-center">Update Skill</h3>
+            </div>
+            <% skill.map((row,i)=>{ %>
+            <div class="col-3 mt-3 mb-3">
+                Skill Image
+                <input type="file" name="skill_image"/>
+                <input type="hidden" name="skill_id" value="<%-row.skill_id%>"/>
+                
+            </div>
+            <div class="col-2 mt-3 mb-3">
+                <img src="/<%-row.skill_image%>" width="100px"/>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+               Skill Title
+               <input type="text" name="skill_title" value="<%-row.skill_title%>"/>
+            </div>
+            <div class="col-3 mt-3 mb-3">
+                <br>
+                <button class="btn btn-primary">Update</button>
+            </div>
+            <%   }) %>
+            </div>
+            </div>
+            </form>
+  <%- include("footer.ejs")%>

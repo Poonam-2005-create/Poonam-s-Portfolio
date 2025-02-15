@@ -1,0 +1,83 @@
+<%- include("navbar.ejs")%>
+<form action="/admin/save_introduction" method="post" enctype="multipart/form-data">
+<div class="container bg-info">
+    <% intro.map((row)=>{ %>
+    <div class="row mt-4">
+        <div class="col-12">
+<h3 class="text-center">Add Introduction</h3>
+        </div>
+        <div class="col-3 mt-3">
+            Enter name
+            <input type="text" name="user_name" class="form-control" value="<%-row.user_name%>"/>
+        </div>
+        <div class="col-3 mt-3">
+            Enter Tagline
+            <input type="text" name="tagline" class="form-control" value="<%-row.tagline%>"/>
+        </div>
+        <div class="col-3 mt-3">
+            Enter Mobile Number
+            <input type="text" name="user_mobile" class="form-control" value="<%-row.user_mobile%>"/>
+        </div>
+        <div class="col-3 mt-3">
+            Enter Email
+            <input type="email" name="user_email" class="form-control" value="<%-row.user_email%>"/>
+        </div>
+        <div class="col-4 mt-3">
+            Photo
+            <input type="file" name="user_photo" class="form-control"/></div>
+            <div class="col-2 mt-3">
+            <img src="/<%-row.user_photo%>" width="100px"/>
+        </div>
+        <div class="col-4 mt-3">
+            Resume PDF
+            <input type="file" name="resume" class="form-control" accept=".pdf"/>
+        </div>
+        <div class="col-2 mt-3">
+            <br>
+           <a href="/<%-row.resume%>"><button type="button" class="btn btn-warning">View</button></a>
+        </div>
+        <div class="col-3 mt-3">
+            LinkedIn Link
+            <input type="url" name="linkedin_link" class="form-control"value="<%-row.linkedin_link%>"/>
+        </div>
+        <div class="col-3 mt-3">
+            Instagram Link
+            <input type="url" name="instagram_link" class="form-control" value="<%-row.instagram_link%>"/>
+        </div>
+        <div class="col-3 mt-3">
+           Facebook Link
+            <input type="url" name="facebook_link" class="form-control" value="<%-row.facebook_link%>"/>
+        </div>
+        <div class="col-3 mt-3">
+            Twitter Link
+            <input type="url" name="twitter_link" class="form-control" value="<%-row.twitter_link%>"/>
+        </div>
+        <div class="col-12 mt-3"> 
+           Add Description
+            <textarea name="description" class="form-control" rows="5"><%-row.description%></textarea>
+        </div>
+        <div class="col-12 text-center mt-4 mb-3">
+           <button class="btn btn-primary">Save</button>
+         </div>
+        </div>
+    <%  }) %>
+</div>
+</form>
+<%- include("footer.ejs")%>
+
+<!--
+create table introduction(
+intro_id int primary key auto_increment,
+user_name varchar(100),
+tagline varchar(200),
+linkedin_link text,
+instagram_link text,
+facebook_link text,
+twitter_link text,
+user_photo text,
+description text,
+user_email varchar(200),
+user_mobile varchar(15),
+resume text
+);
+-->
